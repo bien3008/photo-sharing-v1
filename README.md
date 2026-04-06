@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Photo Sharing Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A full-stack photo sharing application with React frontend and Node.js/Express backend.
 
 ## Available Scripts
 

@@ -1,0 +1,7 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#2C3E50"/>
+  <circle cx="150" cy="100" r="40" fill="#1ABC9C"/>
+  <circle cx="300" cy="150" r="50" fill="#9B59B6"/>
+  <circle cx="450" cy="100" r="40" fill="#E67E22"/>
+  <text x="300" y="350" font-size="24" text-anchor="middle" fill="white" font-family="Arial">kenobi3.jpg</text>
+</svg>

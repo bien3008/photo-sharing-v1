@@ -1,0 +1,6 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="600" height="400" fill="#C1272D"/>
+  <polygon points="300,50 550,350 50,350" fill="#FFD700"/>
+  <circle cx="300" cy="200" r="40" fill="#C1272D"/>
+  <text x="300" y="350" font-size="24" text-anchor="middle" fill="white" font-family="Arial">ludgate1.jpg</text>
+</svg>
