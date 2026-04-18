@@ -1,4 +1,5 @@
-const API_BASE_URL = (process.env.REACT_APP_API_URL || "http://localhost:8081/api").trim();
+// Hardcode port 8081 to bypass .env mismatch pointing to 5000 without requiring React server restart
+const API_BASE_URL = "http://localhost:8081/api";
 
 async function fetchModel(url) {
   try {

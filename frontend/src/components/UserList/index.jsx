@@ -6,12 +6,13 @@ import {
   ListItemText,
   Typography,
   CircularProgress,
+  Badge,
+  Box,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import fetchModel from "../../lib/fetchModelData";
-import models from "../../lib/models";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -21,9 +22,6 @@ function UserList() {
   useEffect(() => {
     const loadUsers = async () => {
       let data = await fetchModel("/user/list");
-      if (!data) {
-        data = models.userListModel();
-      }
       if (data) {
         setUsers(data);
       }
@@ -66,6 +64,32 @@ function UserList() {
                   fontWeight: 500,
                 }}
               />
+              <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                <Badge 
+                  badgeContent={user.photo_count || 0} 
+                  color="success" 
+                  title="Photos"
+                  sx={{ 
+                    cursor: "default",
+                    "& .MuiBadge-badge": { backgroundColor: "#4caf50", color: "white" } 
+                  }}
+                />
+                <Badge 
+                  badgeContent={user.comment_count || 0} 
+                  color="error" 
+                  title="Comments"
+                  sx={{ 
+                    cursor: "pointer", 
+                    "& .MuiBadge-badge": { backgroundColor: "#f44336", color: "white" },
+                    "&:hover": { transform: "scale(1.1)" },
+                    transition: "transform 0.2s"
+                  }}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/comments/${user._id}`);
+                  }}
+                />
+              </Box>
             </ListItemButton>
             <Divider />
           </div>

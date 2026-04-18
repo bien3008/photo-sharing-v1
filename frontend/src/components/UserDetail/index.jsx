@@ -9,7 +9,6 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import fetchModel from "../../lib/fetchModelData";
-import models from "../../lib/models";
 
 function UserDetail() {
   const { userId } = useParams();
@@ -20,9 +19,6 @@ function UserDetail() {
   useEffect(() => {
     const loadUser = async () => {
       let data = await fetchModel(`/user/${userId}`);
-      if (!data) {
-        data = models.userModel(userId);
-      }
       if (data) {
         setUser(data);
       }

@@ -15,7 +15,6 @@ import { useParams, useNavigate } from "react-router-dom";
 
 import "./styles.css";
 import fetchModel from "../../lib/fetchModelData";
-import models from "../../lib/models";
 import { AppContext } from "../../context/AppContext";
 import { formatDateTime } from "../../lib/utils";
 
@@ -47,15 +46,13 @@ function UserPhotos() {
         if (Array.isArray(data)) {
           setPhotos(data);
         } else {
-          const fakeData = models.photoOfUserModel(userId);
-          setPhotos(Array.isArray(fakeData) ? fakeData : []);
+          setPhotos([]);
         }
         setLoading(false);
       })
       .catch(() => {
         if (ignore) return;
-        const fakeData = models.photoOfUserModel(userId);
-        setPhotos(Array.isArray(fakeData) ? fakeData : []);
+        setPhotos([]);
         setLoading(false);
       });
 

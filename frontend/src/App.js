@@ -8,6 +8,7 @@ import TopBar from "./components/TopBar";
 import UserDetail from "./components/UserDetail";
 import UserList from "./components/UserList";
 import UserPhotos from "./components/UserPhotos";
+import UserComments from "./components/UserComments";
 import { AppContext } from "./context/AppContext";
 
 const App = (props) => {
@@ -42,6 +43,10 @@ const App = (props) => {
                     <Route
                         path="/photos/:userId/:photoId?"
                         element = {<UserPhotos />}
+                    />
+                    <Route
+                        path="/comments/:userId"
+                        element={<UserComments />}
                     />
                     <Route path="/users" element={<UserList />} />
                   </Routes>

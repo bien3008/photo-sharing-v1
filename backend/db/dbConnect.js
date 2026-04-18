@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
+require("dns").setServers(["8.8.8.8", "8.8.4.4"]);
 
 // Attempt to connect to provided DB_URL; on failure (dev) fall back to in-memory MongoDB
 async function dbConnect() {
