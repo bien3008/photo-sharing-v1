@@ -1,11 +1,9 @@
-"use strict";
-
 /**
- * Model data for Project 4 - the photo sharing site.
- * This module returns an object called data with the following
+ * Model data for Project 5 - the photo sharing site.
+ * This module returns an object called models with the following
  * functions:
  *
- * data.userListModel() - A function that returns the list of users on
+ * models.userListModel() - A function that returns the list of users on
  * the system. The list is returned as an array of objects containing:
  *   _id (string)         - The ID of the user.
  *   first_name (string)  - The first name of the user.
@@ -14,7 +12,7 @@
  *   description (string) - A brief user description.
  *   occupation (string)  - The occupation of the user.
  *
- * data.userModel() - A function that returns the info of the specified
+ * models.userModel() - A function that returns the info of the specified
  * user. Called with an user ID (id), the function returns n object containing:
  *   _id (string)         - The ID of the user.
  *   first_name (string)  - The first name of the user.
@@ -23,7 +21,7 @@
  *   description (string) - A brief user description.
  *   occupation (string)  - The occupation of the user.
  *
- * data.photoOfUserModel() - A function that returns the photos belong to
+ * models.photoOfUserModel() - A function that returns the photos belong to
  * the specified user. Called with an user ID (id), the function returns an
  * object containing:
  *   _id (string)         - The ID of the photo
@@ -38,7 +36,7 @@
  *       user: (object)     - The user who made the comment.
  *       photo_id: (string) - The ID of the photo the comment belongs to.
  *
- * data.schemaModel() - A function that returns the test info from the
+ * models.schemaModel() - A function that returns the test info from the
  * fake schema. The function returns an object containing:
  *   _id (string)           - The ID of the schema.
  *   __v (number)           - The version number.
@@ -274,8 +272,7 @@ const comment7 = {
 const comment8 = {
   _id: "57231f1a30e4351f4e9f4bf0",
   date_time: "2010-09-06 13:59:33",
-  comment:
-    "Made a new friend today! Well, they followed me " + "home, anyway.",
+  comment: "Made a new friend today! Well, they followed me " + "home, anyway.",
   user: rk,
   photo_id: photo8._id,
 };
@@ -375,11 +372,11 @@ const schemaModel = function () {
   return schemaInfo;
 };
 
-const data = {
+const models = {
   userListModel: userListModel,
   userModel: userModel,
   photoOfUserModel: photoOfUserModel,
   schemaInfo: schemaModel,
 };
 
-module.exports = data;
+module.exports = models;

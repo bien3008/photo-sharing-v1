@@ -19,31 +19,21 @@ import models from "../../lib/models";
 import { AppContext } from "../../context/AppContext";
 import { formatDateTime } from "../../lib/utils";
 
+function photoSrc(fileName) {
+  try {
+    // Webpack sẽ tự động tìm các file ảnh tương ứng trong thư mục images
+    return require(`../../images/${fileName}`);
+  } catch {
+    return ""; // Trả về text rỗng nếu không tìm thấy ảnh
+  }
+}
+
 function UserPhotos() {
   const { advancedEnabled } = useContext(AppContext);
   const { userId, photoId } = useParams();
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-
-  // Use webpack context to load images from src/images
-  // Try exact file name (from backend). If not present, fallback to same name with .svg
-  const imagesContext = require.context("../../images", false, /\.(png|jpe?g|svg)$/);
-
-  const photoSrc = (fileName) => {
-    if (!fileName) return "";
-    try {
-      return imagesContext(`./${fileName}`);
-    } catch (e) {
-      // fallback: try replacing .jpg/.jpeg with .svg
-      const svgName = fileName.replace(/\.jpe?g$/i, ".svg");
-      try {
-        return imagesContext(`./${svgName}`);
-      } catch (e2) {
-        return "";
-      }
-    }
-  };
 
   useEffect(() => {
     let ignore = false;
@@ -208,13 +198,13 @@ function UserPhotos() {
     <Box sx={{ p: 2 }}>
       {photos.map((photo) => (
         <Card key={photo._id} sx={{ mb: 3 }}>
+          <CardMedia
+            component="img"
+            image={photoSrc(photo.file_name)}
+            alt={photo.file_name}
+            sx={{ maxHeight: 500, objectFit: "contain", bgcolor: "background.default" }}
+          />
           <CardContent>
-            <Box
-              component="img"
-              src={photoSrc(photo.file_name)}
-              alt={photo.file_name}
-              sx={{ width: "100%", mb: 2, borderRadius: 1, minHeight: 300 }}
-            />
 
             <Typography variant="body2" color="textSecondary" sx={{ mb: 2 }}>
               📅 {formatDateTime(photo.date_time)}
